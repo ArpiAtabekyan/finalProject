@@ -2,6 +2,7 @@
 //! Requiring modules  --  START
 var Grass = require("./modules/Grass.js");
 var GrassEater = require("./modules/GrassEater.js");
+var Predatory = require("./modules/Predatory.js");
 let random = require('./modules/random');
 //! Requiring modules  --  END
 
@@ -9,12 +10,13 @@ let random = require('./modules/random');
 //! Setting global arrays  --  START
 grassArr = [];
 grassEaterArr = [];
-let predatoryArr = [];
-let predatoryEaterArr = [];
-let randomCharacterEaterArr = [];
+predatoryArr = [];
+predatoryEaterArr = [];
+randomCharacterEaterArr = [];
 
 matrix = [];
 grassHashiv = 0;
+grassEaterHashiv = 0;
 //! Setting global arrays  -- END
 
 
@@ -54,7 +56,7 @@ function matrixGenerator(matrixSize, grass, grassEater, predatory, predatoryEate
         matrix[customY][customX] = 5;
     }
 }
-matrixGenerator(20, 6, 4);
+matrixGenerator(20, 2, 15, 5);
 //! Creating MATRIX -- END
 
 
@@ -71,38 +73,20 @@ app.get('/', function (req, res) {
 server.listen(3000);
 //! SERVER STUFF END  --  END
 
-for (let i in grassArr) {
-    grassArr[i].mul();
-}
-
-for (let i in grassEaterArr) {
-    grassEaterArr[i].eat()
-}
-
-for (let i in predatoryArr) {
-    predatoryArr[i].eat()
-}
-
-for (let i in predatoryEaterArr) {
-    predatoryEaterArr[i].eat()
-}
-
-for (let i in randomCharacterEaterArr) {
-    randomCharacterEaterArr[i].eat()
-}
-
-
-
 function creatingObjects() {
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             if (matrix[y][x] == 2) {
                 var grassEater = new GrassEater(x, y);
                 grassEaterArr.push(grassEater);
+                grassEaterHashiv++;
             } else if (matrix[y][x] == 1) {
                 var grass = new Grass(x, y);
                 grassArr.push(grass);
-                grassHashiv++;
+                // grassHashiv++;
+            } else if (matrix[y][x] == 3) {
+                var predatory = new Predatory(x, y);
+                predatoryArr.push(predatory);
             }
         }
     }
@@ -120,11 +104,17 @@ function game() {
             grassEaterArr[i].eat();
         }
     }
+    if (predatoryArr[0] !== undefined) {
+        for (var i in predatoryArr) {
+            predatoryArr[i].eat();
+        }
+    }
 
     //! Object to send
     let sendData = {
         matrix: matrix,
-        grassCounter: grassHashiv
+        grassCounter: grassHashiv,
+        grassEaterCounter: grassEaterHashiv,
     }
 
     //! Send data over the socket to clients who listens "data"
