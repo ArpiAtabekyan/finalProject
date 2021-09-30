@@ -51,26 +51,5 @@ function setup() {
                 }
             }
         }
-
-        for (let i in grassArr) {
-            grassArr[i].mul();
-        }
-    
-        for (let i in grassEaterArr) {
-            grassEaterArr[i].eat()
-        }
-    
-        for (let i in predatoryArr) {
-            predatoryArr[i].eat()
-        }
-    
-        for (let i in predatoryEaterArr) {
-            predatoryEaterArr[i].eat()
-        }
-    
-        for (let i in randomCharacterEaterArr) {
-            randomCharacterEaterArr[i].eat()
-        }
-
     }
 }
