@@ -2,9 +2,10 @@ var LiveForm = require("./LiveForm");
 var random = require("./random.js");
 
 module.exports = class PredatoryEater extends LiveForm {
+
     constructor(x, y, index) {
         super(x, y, index);
-        this.life = 8;
+        this.life = 10;
     }
 
     getNewCoordinates() {
@@ -57,8 +58,8 @@ module.exports = class PredatoryEater extends LiveForm {
             matrix[this.y][this.x] = 0;
 
             for (let i in predatoryArr) {
-                if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
-                    grassEaterArr.splice(i, 1)
+                if (predatoryArr[i].x == x && predatoryArr[i].y == y) {
+                    predatoryArr.splice(i, 1)
                     break;
                 }
             }
@@ -90,13 +91,13 @@ module.exports = class PredatoryEater extends LiveForm {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
 
-        if (newCell && this.life >= 12) {
+        if (newCell && this.life >= 13) {
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = this.index;
-            let predatory = new PredatoryEater(x, y, this.index);
-            predatoryArr.push(predatory);
-            this.life = 8;
+            let predatoryEater = new PredatoryEater(x, y, this.index);
+            predatoryEaterArr.push(predatoryEater);
+            this.life = 10;
         }
     }
 

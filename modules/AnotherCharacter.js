@@ -1,10 +1,11 @@
 var LiveForm = require("./LiveForm");
 var random = require("./random.js");
 
-module.exports = class Predatory extends LiveForm {
+module.exports = class AnotherCharacter extends LiveForm {
+
     constructor(x, y, index) {
         super(x, y, index);
-        this.life = 10;
+        this.life = 6;
     }
 
     getNewCoordinates() {
@@ -33,7 +34,7 @@ module.exports = class Predatory extends LiveForm {
         if (newCell) {
             let x = newCell[0];
             let y = newCell[1];
-            matrix[y][x] = 3;
+            matrix[y][x] = 5;
             matrix[this.y][this.x] = 0;
             this.y = y;
             this.x = x;
@@ -44,7 +45,7 @@ module.exports = class Predatory extends LiveForm {
     }
 
     eat() {
-        let emptyCells = this.chooseCell(2);
+        let emptyCells = this.chooseCell(4);
         let newCell = random(emptyCells);
 
         if (newCell) {
@@ -56,16 +57,16 @@ module.exports = class Predatory extends LiveForm {
             matrix[y][x] = this.index;
             matrix[this.y][this.x] = 0;
 
-            for (let i in grassEaterArr) {
-                if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
-                    grassEaterArr.splice(i, 1)
+            for (let i in predatoryEaterArr) {
+                if (predatoryEaterArr[i].x == x && predatoryEaterArr[i].y == y) {
+                    predatoryEaterArr.splice(i, 1)
                     break;
                 }
             }
             this.x = x;
             this.y = y;
 
-            if (this.life >= 12) {
+            if (this.life >= 13) {
                 this.mul();
             }else {
                 
@@ -79,9 +80,9 @@ module.exports = class Predatory extends LiveForm {
     die() {
         matrix[this.y][this.x] = 0;
 
-        for (let i in predatoryArr) {
-            if (predatoryArr[i].x == this.x && predatoryArr[i].y == this.y) {
-                predatoryArr.splice(i, 1)
+        for (let i in anotherCharacterArr) {
+            if (anotherCharacterArr[i].x == this.x && anotherCharacterArr[i].y == this.y) {
+                anotherCharacterArr.splice(i, 1)
             }
         }
     }
@@ -90,12 +91,12 @@ module.exports = class Predatory extends LiveForm {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
 
-        if (newCell && this.life >= 12) {
+        if (newCell && this.life >= 13) {
             let x = newCell[0];
             let y = newCell[1];
             matrix[y][x] = this.index;
-            let predatory = new Predatory(x, y, this.index);
-            predatoryArr.push(predatory);
+            let anotherCharacter = new AnotherCharacter(x, y, this.index);
+            anotherCharacterArr.push(anotherCharacter);
             this.life = 10;
         }
     }

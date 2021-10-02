@@ -57,11 +57,41 @@
                     երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
                 <td id="grassEaterCount"></td>
             </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td scope="row" style="background-color:red;"></td>
+                <td>Karmiry gishatichn e</td>
+                <td id="predatoryCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">4</th>
+                <td scope="row" style="background-color:blue;"></td>
+                <td>Kapuyty gishatichin utoxn e</td>
+                <td id="predatoryEaterCount"></td>
+            </tr>
+            <tr>
+                <th scope="row">5</th>
+                <td scope="row" style="background-color:yellow;"></td>
+                <td>Dexiny utom e gishatich utoxin e</td>
+                <td id="anotherCharacterCount"></td>
+            </tr>
         </tbody>
     </table>
+    <ul>
+        <li>
+            <button onclick="kill()">Kill them all</button>
+        </li>
+        <li>
+            <button onclick="addGrass()">Add grass</button>
+        </li>
+        <li>
+            <button onclick="addGrassEater()">Add grass eater</button>
+        </li>
+    </ul>
     <script src="p5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
+    <script src="server.js"></script>
 </body>
 
 </html>

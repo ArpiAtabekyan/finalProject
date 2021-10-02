@@ -37,5 +37,7 @@ module.exports = class Grass extends LiveForm {
             grassArr.push(grass);
             this.multiply = 0;
         }
+
+        
     }
 }
