@@ -22,6 +22,11 @@
         body {
             font-family: 'Noto Sans', sans-serif !important;
         }
+
+        ul li {
+            display: inline;
+            margin: 0 auto;
+        }
     </style>
     </style>
 </head>
@@ -52,7 +57,7 @@
             </tr>
             <tr>
                 <th scope="row">2</th>
-                <td scope="row" style="background-color:orange;"></td>
+                <td scope="row" style="background-color:rgb(248, 225, 14);"></td>
                 <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
                     երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
                 <td id="grassEaterCount"></td>
@@ -71,27 +76,35 @@
             </tr>
             <tr>
                 <th scope="row">5</th>
-                <td scope="row" style="background-color:yellow;"></td>
+                <td scope="row" style="background-color:orange;"></td>
                 <td>Dexiny utom e gishatich utoxin e</td>
                 <td id="anotherCharacterCount"></td>
             </tr>
         </tbody>
     </table>
-    <ul>
-        <li>
-            <button onclick="kill()">Kill them all</button>
-        </li>
-        <li>
-            <button onclick="addGrass()">Add grass</button>
-        </li>
-        <li>
-            <button onclick="addGrassEater()">Add grass eater</button>
-        </li>
-    </ul>
+        <ul style="list-style-type: none">
+            <li>
+                <button onclick="kill()" style="border-radius: 5px;">Kill them all</button>
+            </li>
+            <li>
+                <button onclick="addGrass()" style="border-radius: 5px;">Add grass</button>
+            </li>
+            <li>
+                <button onclick="addGrassEater()" style="border-radius: 5px;">Add grass eater</button>
+            </li>
+            <li>
+                <button onclick="addPredatory()" style="border-radius: 5px;">Add predatory</button>
+            </li>
+            <li>
+                <button onclick="addPredatoryEater()" style="border-radius: 5px;">Add predatory eater</button>
+            </li>
+            <li>
+                <button onclick="addAnotherCharacter()" style="border-radius: 5px;">Add another character</button>
+            </li>
+        </ul>
     <script src="p5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
-    <script src="server.js"></script>
 </body>
 
 </html>

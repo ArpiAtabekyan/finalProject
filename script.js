@@ -1,12 +1,14 @@
 
 //! Setup function fires automatically
+    var socket = io();
 function setup() {
 
-    var socket = io();
 
     var side = 30;
 
     var matrix = [];
+
+    var weath = "winter"
 
     //! Getting DOM objects (HTML elements)
     let grassCountElement = document.getElementById('grassCount');
@@ -105,6 +107,7 @@ function setup() {
         socket.on('send matrix', nkarel)
     }
 
+}
     function kill() {
         socket.emit("kill")
     }
@@ -114,5 +117,12 @@ function setup() {
     function addGrassEater() {
         socket.emit("add grassEater")
     }
-
-}
+    function addPredatory() {
+        socket.emit("add predatory")
+    }
+    function addPredatoryEater() {
+        socket.emit("add predatoryEater")
+    }
+    function addAnotherCharacter() {
+        socket.emit("add adnotherCharacter")
+    }

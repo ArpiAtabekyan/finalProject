@@ -55,9 +55,11 @@ io.sockets.emit("send matrix", matrix)
 //! Creating MATRIX -- END
 
 function kill() {
-    console.log("Hello");
     grassArr = [];
     grassEaterArr = [];
+    predatoryArr = [];
+    predatoryEaterArr = [];
+    anotherCharacterArr = [];
     for (var y = 0; y < matrix.length; y++) {
         for (var x = 0; x < matrix[y].length; x++) {
             matrix[y][x] = 0;
@@ -86,6 +88,39 @@ function addGrassEater() {
         if (matrix[y][x] == 0) {
             matrix[y][x] = 2
             grassEaterArr.push(new GrassEater(x, y, 2))
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+function addPredatory() {
+    for (var i = 0; i < 7; i++) {   
+    var x = Math.floor(Math.random() * matrix[0].length)
+    var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 3
+            predatoryArr.push(new Predatory(x, y, 3))
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+function addPredatoryEater() {
+    for (var i = 0; i < 7; i++) {   
+    var x = Math.floor(Math.random() * matrix[0].length)
+    var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 4
+            predatoryEaterArr.push(new PredatoryEater(x, y, 4))
+        }
+    }
+    io.sockets.emit("send matrix", matrix);
+}
+function addAnotherCharacter() {
+    for (var i = 0; i < 7; i++) {   
+    var x = Math.floor(Math.random() * matrix[0].length)
+    var y = Math.floor(Math.random() * matrix.length)
+        if (matrix[y][x] == 0) {
+            matrix[y][x] = 5
+            anotherCharacterArr.push(new AnotherCharacter(x, y, 5))
         }
     }
     io.sockets.emit("send matrix", matrix);
@@ -190,9 +225,13 @@ function weather() {
 }
 setInterval(weather, 5000);
 
+
 io.on('connection', function (socket) {
     creatingObjects();
     socket.on("kill", kill);
     socket.on("add grass", addGrass);
     socket.on("add grassEater", addGrassEater);
+    socket.on("add predatory", addPredatory);
+    socket.on("add predatoryEater", addPredatoryEater);
+    socket.on("add adnotherCharacter", addAnotherCharacter);
 });
