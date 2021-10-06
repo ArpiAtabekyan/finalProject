@@ -24,8 +24,20 @@
         }
 
         ul li {
-            display: inline;
-            margin: 0 auto;
+            /* display: inline; */
+            display: inline-block;
+            text-align: left;
+        }
+        div {
+            
+            height: 50px;
+            width: 100%;
+            text-align: center;
+        }
+        button {
+            background-color: transparent;
+            border: 2px solid;
+            border-radius: 20px;
         }
     </style>
     </style>
@@ -38,7 +50,7 @@
                 <h1>Ծրագրավորում III Երևան</h1>
             </tr>
             <tr>
-                <h1>Անուն Ազգանուն</h1>
+                <h1>Արփի Աթաբեկյան</h1>
             </tr>
             <tr>
                 <th scope="col">#</th>
@@ -51,37 +63,37 @@
             <tr>
                 <th scope="row">1</th>
                 <td scope="row" style="background-color:green;"></td>
-                <td>Կանաչը խոտն է, որը բազմանում է N ցիկլը մեկ,մահանում է երբ նրան ուտում է խոտակերը, կամ այրում է
-                    կրակը, կամ նրան կոխկրտում է գիշատիչը</td>
+                <td>Կանաչը մահանում է երբ նրան ուտում է դեղինը</td>
                 <td id="grassCount"></td>
             </tr>
             <tr>
                 <th scope="row">2</th>
                 <td scope="row" style="background-color:rgb(248, 225, 14);"></td>
-                <td>Դեղինը խոտակերն է, որը բազմանում է N հատ խոտ ուտելուց հետո և մահանում է N հատ չուտելուց հետո, կամ
-                    երբ նրան ուտում է գիշատիչը, կամ երբ նրան այրում է կրակը:</td>
+                <td>Դեղինը բազմանում է, երբ էներգիան 13 է և մահանում է, երբ 0 է , կամ
+                    երբ նրան ուտում է կարմիրը</td>
                 <td id="grassEaterCount"></td>
             </tr>
             <tr>
                 <th scope="row">3</th>
                 <td scope="row" style="background-color:red;"></td>
-                <td>Karmiry gishatichn e</td>
+                <td>Կարմիրը բազմանում է, երբ էներգիան 13 է և մահանում է, երբ 0 է, կամ երբ նրան ուտում է կապույտը</td>
                 <td id="predatoryCount"></td>
             </tr>
             <tr>
                 <th scope="row">4</th>
                 <td scope="row" style="background-color:blue;"></td>
-                <td>Kapuyty gishatichin utoxn e</td>
+                <td>Կապույտը բազմանում է, երբ էներգիան 13 է և մահանում է, երբ 0 է, կամ երբ նրան ուտում է դեղինը</td>
                 <td id="predatoryEaterCount"></td>
             </tr>
             <tr>
                 <th scope="row">5</th>
                 <td scope="row" style="background-color:orange;"></td>
-                <td>Dexiny utom e gishatich utoxin e</td>
+                <td>Դեղինը բազմանում է, երբ էներգիան 13 է և մահանում է, երբ 0 է</td>
                 <td id="anotherCharacterCount"></td>
             </tr>
         </tbody>
     </table>
+    <div>
         <ul style="list-style-type: none">
             <li>
                 <button onclick="kill()" style="border-radius: 5px;">Kill them all</button>
@@ -102,6 +114,7 @@
                 <button onclick="addAnotherCharacter()" style="border-radius: 5px;">Add another character</button>
             </li>
         </ul>
+    </div>
     <script src="p5.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script src="script.js"></script>
